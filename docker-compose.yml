@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: ecommerce-learnEcom
+    environment:
+      POSTGRES_DB: ecom
+      POSTGRES_USER: learnecom
+      POSTGRES_PASSWORD: pgadmin123
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
