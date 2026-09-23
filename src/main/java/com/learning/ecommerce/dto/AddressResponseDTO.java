@@ -6,7 +6,7 @@ public record AddressResponseDTO(
 
         UUID id,
 
-        Long userId,
+        UUID userId,
 
         String addressLine,
 

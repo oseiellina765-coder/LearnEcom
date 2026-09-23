@@ -16,5 +16,5 @@ public interface AddressRepository
             UUID userId
     );
 
-    void deleteByUserId(UUID userId);
+
 }
