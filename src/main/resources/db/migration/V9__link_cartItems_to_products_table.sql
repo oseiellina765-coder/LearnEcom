@@ -1,0 +1,12 @@
+-- ALTER TABLE cart_items
+--     ADD CONSTRAINT fk_cart_items_product
+--         FOREIGN KEY (product_id)
+--             REFERENCES products(id)
+--             ON DELETE RESTRICT;
+--
+-- CREATE INDEX idx_cart_items_product_id
+--     ON cart_items(product_id);
+--
+-- ALTER TABLE cart_items
+--     ADD CONSTRAINT uq_cart_product
+--         UNIQUE (cart_id, product_id);

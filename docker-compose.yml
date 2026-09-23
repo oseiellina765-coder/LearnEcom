@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: learnecom
       POSTGRES_PASSWORD: pgadmin123
     ports:
-      - "5434:5432"
+      - "5544:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
