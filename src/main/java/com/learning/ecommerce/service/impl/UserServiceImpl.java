@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDTO getUserById(Long userId) {
+    public UserDTO getUserById(UUID userId) {
         User user= userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User does not exist with the given id:" + userId));
         return UserMapper.mapToUserDTO(user);
@@ -36,13 +37,18 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserDTO> getAllUsers() {
         List<User> users =userRepository.findAll();
-        return users.stream().map((user) -> UserMapper.mapToUserDTO(user))
+        return users.stream().map(UserMapper::mapToUserDTO)
                 .collect(Collectors.toList());
 
     }
 
     @Override
-    public UserDTO updateUser(Long userId, UserDTO updatedUserDetails) {
+    public void deleteUser(UUID userId) {
+
+    }
+
+    @Override
+    public UserDTO updateUser(UUID userId, UserDTO updatedUserDetails) {
          User user =userRepository.findById(userId).orElseThrow(
                  () ->new ResourceNotFoundException("User does not exist with the given id:" + userId));
 
@@ -54,4 +60,6 @@ public class UserServiceImpl implements UserService{
 
          return UserMapper.mapToUserDTO(updatedUserDetailsObj);
     }
+
+
 }
